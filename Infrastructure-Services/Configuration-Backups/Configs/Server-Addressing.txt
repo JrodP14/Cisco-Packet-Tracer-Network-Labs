@@ -1,0 +1,18 @@
+Cisco Packet Tracer SERVER Command Line 1.0
+C:\>ipconfig /all
+
+FastEthernet0 Connection:(default port)
+
+   Connection-specific DNS Suffix..: 
+   Physical Address................: 0001.C7AA.B471
+   Link-local IPv6 Address.........: FE80::201:C7FF:FEAA:B471
+   IPv6 Address....................: ::
+   IPv4 Address....................: 10.20.30.99
+   Subnet Mask.....................: 255.255.255.0
+   Default Gateway.................: ::
+                                     10.20.30.1
+   DHCP Servers....................: 0.0.0.0
+   DHCPv6 IAID.....................: 
+   DHCPv6 Client DUID..............: 00-01-00-01-3B-E0-19-A9-00-01-C7-AA-B4-71
+   DNS Servers.....................: ::
+                                     8.8.8.8

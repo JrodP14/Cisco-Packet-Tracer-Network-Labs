@@ -1,0 +1,79 @@
+LAN-RTR#sho run
+Building configuration...
+
+Current configuration : 639 bytes
+!
+version 12.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname LAN-RTR
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 192.168.10.254 255.255.255.0
+ ip nat inside
+ duplex full
+ speed 100
+!
+interface FastEthernet0/1
+ ip address 10.10.10.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 10.10.10.1 
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

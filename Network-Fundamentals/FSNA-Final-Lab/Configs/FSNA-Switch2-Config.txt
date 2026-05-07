@@ -1,0 +1,284 @@
+FSNA-SW2#sho run
+Building configuration...
+
+Current configuration : 5991 bytes
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname FSNA-SW2
+!
+enable secret 5 $1$mERr$bUOOPN/wrAb4b6k.M1QXr0
+!
+!
+!
+mls qos
+!
+ip ssh version 2
+ip domain-name fsna.local
+!
+username fsna privilege 1 password 7 083B584B
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/2
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/3
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/4
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/5
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/6
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/7
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/8
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/9
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/10
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/11
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/12
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/13
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/14
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/15
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/16
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/17
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/18
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/19
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/20
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/21
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/22
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/23
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface FastEthernet0/24
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport voice vlan 150
+ spanning-tree portfast
+ mls qos trust cos
+ mls qos trust device cisco-phone
+!
+interface GigabitEthernet0/1
+ description Trunk to FSNA-SW1
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+ description Trunk to FSNA-SW1
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan100
+ ip address 192.168.100.252 255.255.255.0
+!
+ip default-gateway 192.168.100.1
+!
+!
+!
+!
+ip access-list standard VTY
+ permit 192.168.100.0 0.0.0.255
+line con 0
+ login local
+!
+line vty 0 4
+ access-class VTY in
+ login local
+ transport input ssh
+ transport output ssh
+line vty 5 15
+ access-class VTY in
+ login local
+ transport input ssh
+ transport output ssh
+!
+!
+!
+!
+end

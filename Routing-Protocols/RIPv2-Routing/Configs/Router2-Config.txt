@@ -1,0 +1,93 @@
+Router2#sho run
+Building configuration...
+
+Current configuration : 882 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router2
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX1524H1LZ
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description LAN 4
+ ip address 192.168.101.2 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ description LAN 5
+ ip address 192.168.102.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/0
+ description LAN 6
+ ip address 192.168.103.1 255.255.255.0
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router rip
+ version 2
+ network 192.168.101.0
+ network 192.168.102.0
+ network 192.168.103.0
+ no auto-summary
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

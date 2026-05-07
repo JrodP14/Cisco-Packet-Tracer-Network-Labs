@@ -1,0 +1,123 @@
+Router3#sho run
+Building configuration...
+
+Current configuration : 1844 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router3
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2911/K9 sn FTX1524T3OC
+license boot module c2900 technology-package securityk9
+license boot module c2900 technology-package uck9
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip inspect name firewall http timeout 3600
+ip inspect name firewall icmp timeout 10
+ip inspect name firewall tcp timeout 3600
+ip inspect name firewall telnet timeout 3600
+ip inspect name firewall udp timeout 30
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description Connection to Router0
+ ip address 192.168.252.6 255.255.255.252
+ ip nat inside
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ description LAN 2
+ ip address 172.16.50.1 255.255.255.0
+ ip nat inside
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ description Internet
+ bandwidth 100000
+ ip address 201.45.66.98 255.255.255.252
+ ip nat outside
+ ip inspect firewall out
+ ip access-group PROTECT in
+ duplex auto
+ speed 100
+!
+interface GigabitEthernet0/0/0
+ description Fiber to Router2
+ ip address 192.168.252.9 255.255.255.252
+ ip nat inside
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router rip
+ version 2
+ passive-interface GigabitEthernet0/1
+ passive-interface GigabitEthernet0/2
+ network 172.16.0.0
+ network 192.168.252.0
+ default-information originate
+ no auto-summary
+!
+ip nat inside source list INSIDE interface GigabitEthernet0/2 overload
+ip classless
+ip route 0.0.0.0 0.0.0.0 201.45.66.97 
+!
+ip flow-export version 9
+!
+!
+ip access-list extended PROTECT
+ deny ip any any
+ip access-list standard INSIDE
+ permit 10.0.0.0 0.255.255.255
+ permit 172.16.0.0 0.15.255.255
+ permit 192.168.0.0 0.0.255.255
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

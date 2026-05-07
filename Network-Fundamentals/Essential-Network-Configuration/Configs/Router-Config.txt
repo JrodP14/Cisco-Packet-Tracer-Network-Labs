@@ -1,0 +1,82 @@
+ICND1-RTR#sho run
+Building configuration...
+
+Current configuration : 693 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname ICND1-RTR
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX1524X7JM
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description LAN 1 Gateway
+ ip address 10.20.30.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ description LAN 2 Gateway
+ ip address 172.16.50.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

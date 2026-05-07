@@ -1,0 +1,34 @@
+Cisco Packet Tracer PC Command Line 1.0
+C:\>ipconfig /all
+
+FastEthernet0 Connection:(default port)
+
+   Connection-specific DNS Suffix..: 
+   Physical Address................: 0000.0C20.5A53
+   Link-local IPv6 Address.........: FE80::200:CFF:FE20:5A53
+   IPv6 Address....................: ::
+   IPv4 Address....................: 192.168.200.53
+   Subnet Mask.....................: 255.255.255.0
+   Default Gateway.................: ::
+                                     192.168.200.1
+   DHCP Servers....................: 192.168.200.1
+   DHCPv6 IAID.....................: 
+   DHCPv6 Client DUID..............: 00-01-00-01-A5-3D-8E-5D-00-00-0C-20-5A-53
+   DNS Servers.....................: ::
+                                     8.8.8.8
+
+Bluetooth Connection:
+
+   Connection-specific DNS Suffix..: 
+   Physical Address................: 00D0.FF11.7A52
+   Link-local IPv6 Address.........: ::
+   IPv6 Address....................: ::
+   IPv4 Address....................: 0.0.0.0
+   Subnet Mask.....................: 0.0.0.0
+   Default Gateway.................: ::
+                                     0.0.0.0
+   DHCP Servers....................: 0.0.0.0
+   DHCPv6 IAID.....................: 
+   DHCPv6 Client DUID..............: 00-01-00-01-A5-3D-8E-5D-00-00-0C-20-5A-53
+   DNS Servers.....................: ::
+                                     8.8.8.8

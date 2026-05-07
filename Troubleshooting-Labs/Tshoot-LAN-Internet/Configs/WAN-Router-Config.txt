@@ -1,0 +1,102 @@
+WAN-RTR#sho run
+Building configuration...
+
+Current configuration : 1348 bytes
+!
+version 12.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname WAN-RTR
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip inspect name firewall http timeout 3600
+ip inspect name firewall icmp timeout 10
+ip inspect name firewall tcp timeout 3600
+ip inspect name firewall telnet timeout 3600
+ip inspect name firewall udp timeout 30
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 10.10.10.1 255.255.255.252
+ ip nat inside
+ ip inspect firewall in
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Ethernet0/0/0
+ description Internet
+ ip address 201.45.66.98 255.255.255.252
+ ip nat outside
+ ip access-group PROTECT in
+ duplex half
+ speed 10
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip nat inside source list INSIDE interface Ethernet0/0/0 overload
+ip classless
+ip route 192.168.20.0 255.255.255.0 192.168.250.1 
+ip route 192.168.250.4 255.255.255.252 192.168.250.1 
+ip route 0.0.0.0 0.0.0.0 201.45.66.97 
+ip route 192.168.10.0 255.255.255.0 10.10.10.2 
+!
+ip flow-export version 9
+!
+!
+ip access-list standard INSIDE
+ permit 192.168.0.0 0.0.255.255
+ip access-list extended PROTECT
+ deny ip any any
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

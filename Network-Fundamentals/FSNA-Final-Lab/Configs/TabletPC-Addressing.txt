@@ -1,0 +1,50 @@
+Cisco Packet Tracer PC Command Line 1.0
+C:\>ipconfig /all
+
+Wireless0 Connection:(default port)
+
+   Connection-specific DNS Suffix..: 
+   Physical Address................: 00D0.D382.0A0A
+   Link-local IPv6 Address.........: FE80::2D0:D3FF:FE82:A0A
+   IPv6 Address....................: ::
+   IPv4 Address....................: 192.168.200.51
+   Subnet Mask.....................: 255.255.255.0
+   Default Gateway.................: ::
+                                     192.168.200.1
+   DHCP Servers....................: 192.168.200.1
+   DHCPv6 IAID.....................: 12882
+   DHCPv6 Client DUID..............: 00-01-00-01-E7-83-A0-BA-00-D0-D3-82-0A-0A
+   DNS Servers.....................: ::
+                                     8.8.8.8
+
+3G/4G Cell1 Connection:
+
+   Connection-specific DNS Suffix..: 
+   Physical Address................: 00E0.A35C.5890
+   Link-local IPv6 Address.........: FE80::2E0:A3FF:FE5C:5890
+   IPv6 Address....................: ::
+   IPv4 Address....................: 0.0.0.0
+   Subnet Mask.....................: 0.0.0.0
+   Default Gateway.................: ::
+                                     0.0.0.0
+   DHCP Servers....................: 0.0.0.0
+   DHCPv6 IAID.....................: 12882
+   DHCPv6 Client DUID..............: 00-01-00-01-E7-83-A0-BA-00-D0-D3-82-0A-0A
+   DNS Servers.....................: ::
+                                     8.8.8.8
+
+Bluetooth Connection:
+
+   Connection-specific DNS Suffix..: 
+   Physical Address................: 000C.CF76.532D
+   Link-local IPv6 Address.........: ::
+   IPv6 Address....................: ::
+   IPv4 Address....................: 0.0.0.0
+   Subnet Mask.....................: 0.0.0.0
+   Default Gateway.................: ::
+                                     0.0.0.0
+   DHCP Servers....................: 0.0.0.0
+   DHCPv6 IAID.....................: 12882
+   DHCPv6 Client DUID..............: 00-01-00-01-E7-83-A0-BA-00-D0-D3-82-0A-0A
+   DNS Servers.....................: ::
+                                     8.8.8.8

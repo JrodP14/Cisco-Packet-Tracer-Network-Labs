@@ -1,0 +1,102 @@
+ZTE-Router#sho run
+Building configuration...
+
+Current configuration : 1210 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname ZTE-Router
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+username zte privilege 15 password 0 zte
+!
+!
+license udi pid CISCO2911/K9 sn FTX152454B2
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ssh version 2
+no ip domain-lookup
+ip domain-name zerotoengineer.com
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 192.168.100.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 10.10.10.1 255.255.255.0
+ ip access-group 101 in
+ ip access-group 99 out
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ description INTERNET
+ ip address 201.45.66.98 255.255.255.248
+ duplex auto
+ speed auto
+ no cdp enable
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 201.45.66.97 
+!
+ip flow-export version 9
+!
+!
+access-list 99 deny host 192.168.100.50
+access-list 99 permit any
+access-list 1 permit 10.10.10.0 0.0.0.255
+access-list 101 deny tcp host 10.10.10.50 any eq www
+access-list 101 permit ip any any
+!
+!
+!
+!
+!
+line con 0
+ login local
+!
+line aux 0
+!
+line vty 0 4
+ access-class 1 in
+ login local
+!
+!
+!
+end

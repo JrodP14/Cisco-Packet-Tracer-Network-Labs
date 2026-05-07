@@ -1,0 +1,87 @@
+Lab-Router#sho run
+Building configuration...
+
+Current configuration : 715 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Lab-Router
+!
+!
+!
+enable secret 5 $1$mERr$vcikQEHO0b/nXHDFRmchN.
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+username nexgent password 0 nexgent
+!
+!
+license udi pid CISCO1941/K9 sn FTX1524I7F6
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ login local
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

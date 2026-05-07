@@ -1,0 +1,212 @@
+FSNA-RTR#sho run
+Building configuration...
+
+Current configuration : 3948 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname FSNA-RTR
+!
+no logging console
+!
+!
+enable secret 5 $1$mERr$bUOOPN/wrAb4b6k.M1QXr0
+!
+!
+ip dhcp excluded-address 192.168.150.1 192.168.150.50
+ip dhcp excluded-address 192.168.200.1 192.168.200.50
+!
+ip dhcp pool VOICE
+ network 192.168.150.0 255.255.255.0
+ default-router 192.168.150.1
+ option 150 ip 192.168.150.1
+ dns-server 8.8.8.8
+ip dhcp pool DATA
+ network 192.168.200.0 255.255.255.0
+ default-router 192.168.200.1
+ dns-server 8.8.8.8
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+username fsna password 7 083B584B
+!
+!
+license udi pid CISCO2901/K9 sn FTX1524P9G4-
+license boot module c2900 technology-package securityk9
+license boot module c2900 technology-package uck9
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ssh version 2
+no ip domain-lookup
+ip domain-name fsna.local
+!
+!
+ip inspect name FIREWALL http timeout 3600
+ip inspect name FIREWALL icmp timeout 10
+ip inspect name FIREWALL tcp timeout 3600
+ip inspect name FIREWALL udp timeout 30
+spanning-tree mode pvst
+!
+class-map match-any VOIP-RTP
+ match protocol rtp
+ match access-group name VOIP-RTP
+ match ip dscp ef
+class-map match-any VOIP-Control
+ match access-group name VOIP-Control
+ match ip dscp af31
+!
+policy-map VOIP-QOS
+ class VOIP-Control
+  bandwidth percent 1
+  set ip dscp af31
+ class VOIP-RTP
+  priority percent 10
+  set ip dscp ef
+ class class-default
+  fair-queue
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description Trunk to FSNA-SW1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0.100
+ description MGMT
+ encapsulation dot1Q 100
+ ip address 192.168.100.1 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet0/0.150
+ description VOICE
+ encapsulation dot1Q 150
+ ip address 192.168.150.1 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet0/0.200
+ description DATA
+ encapsulation dot1Q 200
+ ip address 192.168.200.1 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet0/1
+ description 100Mbps Internet
+ bandwidth 100000
+ ip address 205.10.49.34 255.255.255.252
+ ip nat outside
+ ip inspect FIREWALL out
+ service-policy output VOIP-QOS
+ ip access-group PROTECT in
+ duplex auto
+ speed 100
+ no cdp enable
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip nat inside source list INSIDE interface GigabitEthernet0/1 overload
+ip classless
+ip route 0.0.0.0 0.0.0.0 205.10.49.33 
+!
+ip flow-export version 9
+!
+!
+ip access-list standard INSIDE
+ permit 192.168.0.0 0.0.255.255
+ip access-list standard VTY
+ permit 192.168.100.0 0.0.0.255
+ip access-list extended PROTECT
+ permit tcp host 205.150.39.29 host 205.10.49.34 eq 1720
+ip access-list extended VOIP-Control
+ permit tcp any any range 5060 5061
+ permit udp any any range 5060 5061
+ permit tcp any any eq 1720
+ip access-list extended VOIP-RTP
+ permit udp any any range 1025 1999
+!
+banner motd ^C
+##########################################
+#       This is a private network!       #
+#  System use is subject to monitoring.  #
+#   Unauthorized users are prohibited    #
+#    and violators may be prosecuted.    #
+##########################################^C
+!
+!
+!
+!
+dial-peer voice 101 voip
+ destination-pattern [2-9]..[2-9]......$
+ session target ipv4:205.150.39.29
+!
+dial-peer voice 102 voip
+ destination-pattern [2-9]......$
+ session target ipv4:205.150.39.29
+!
+dial-peer voice 103 voip
+ destination-pattern 011T
+ session target ipv4:205.150.39.29
+!
+dial-peer voice 104 voip
+ destination-pattern [4,9]11$
+ session target ipv4:205.150.39.29
+!
+telephony-service
+ max-ephones 42
+ max-dn 144
+ ip source-address 192.168.150.1 port 2000
+!
+ephone-dn 1
+ number 1001
+!
+ephone-dn 2
+ number 1002
+!
+ephone 1
+ device-security-mode none
+ mac-address 0005.5E89.D657
+ type 7960
+ button 1:1
+!
+ephone 2
+ device-security-mode none
+ mac-address 0009.7CE6.E321
+ type 7960
+ button 1:2
+!
+line con 0
+ login local
+!
+line aux 0
+!
+line vty 0 4
+ access-class VTY in
+ login local
+ transport input ssh
+ transport output ssh
+!
+!
+!
+end

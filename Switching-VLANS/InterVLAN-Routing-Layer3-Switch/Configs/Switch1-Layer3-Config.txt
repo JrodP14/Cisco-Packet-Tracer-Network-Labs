@@ -1,0 +1,229 @@
+Lab-SW1#sho run
+Building configuration...
+
+Current configuration : 3912 bytes
+!
+version 12.2(37)SE1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Lab-SW1
+!
+!
+no profinet
+!
+!
+!
+!
+!
+ip routing
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ description Access Port
+ switchport access vlan 100
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/2
+ description Access Port
+ switchport access vlan 100
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/3
+ description Access Port
+ switchport access vlan 100
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/4
+ description Access Port
+ switchport access vlan 100
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/5
+ description Access Port
+ switchport access vlan 100
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/6
+ description Access Port
+ switchport access vlan 100
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/7
+ description Access Port
+ switchport access vlan 100
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/8
+ description Access Port
+ switchport access vlan 100
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/9
+ description Access Port
+ switchport access vlan 100
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/10
+ description Access Port
+ switchport access vlan 100
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/11
+ description Access Port
+ switchport access vlan 100
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/12
+ description Access Port
+ switchport access vlan 100
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/13
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/14
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/15
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/16
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/17
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/18
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/19
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/20
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/21
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/22
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/23
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/24
+ description Access Port
+ switchport access vlan 200
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet0/1
+ description Trunk to Lab-SW2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan100
+ description VLAN 100 Gateway
+ mac-address 0002.4a33.c901
+ ip address 192.168.100.1 255.255.255.0
+!
+interface Vlan200
+ description VLAN 200 Gateway
+ mac-address 0002.4a33.c902
+ ip address 10.10.10.1 255.255.255.0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+!
+end
